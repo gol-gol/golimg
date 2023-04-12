@@ -2,6 +2,7 @@ package golimg
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"image"
 	"image/color"
@@ -135,7 +136,7 @@ func (drawtxt *DrawText) LoadBgImage(imgpath string) (*image.RGBA, error) {
 	if rgba, ok := img.(*image.RGBA); ok {
 		return rgba, nil
 	}
-	return &image.RGBA{}, err
+	return &image.RGBA{}, errors.New("Failed to convert loaded image to RGBA.")
 }
 
 // Get Font Drawer instance with destination image & font configs
